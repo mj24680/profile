@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad's Portfolio</title>
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset default margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff;
+            padding: 20px;
+        }
+
+        /* Main container */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* Header section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header-text h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .header-text h1 span {
+            color: #000;
+            font-weight: 900;
+        }
+
+        .header-text h1 .emoji {
+            font-size: 0.8em;
+            vertical-align: middle;
+        }
+
+        .header-text p {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            /* Ensure the image stays within the circular boundary */
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            /* Ensure the image scales properly while maintaining aspect ratio */
+            object-position: center;
+            /* Center the image within the container */
+            display: block;
+            /* Remove any extra space below the image */
+        }
+
+        /* About section */
+        .about {
+            margin-bottom: 40px;
+        }
+
+        .about h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .about p {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Work Experience section */
+        .work-experience {
+            margin-bottom: 40px;
+        }
+
+        .work-experience h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .job {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .job-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            background-image: url('https://via.placeholder.com/40');
+            /* Replace with actual logo URL */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .job-logo.hexions {
+            background-image: url('https://via.placeholder.com/40/FF0000/FFFFFF?text=HEXIONS');
+            /* Replace with actual HEXIONS logo URL */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .job-details h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .job-details p {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .job-date {
+            margin-left: auto;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* Education section */
+        .education {
+            margin-bottom: 40px;
+        }
+
+        .education h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .education-entry {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .education-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            background-image: url('https://via.placeholder.com/40');
+            /* Replace with actual logo URL */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .education-logo.bzu {
+            background-image: url('https://via.placeholder.com/40/0000FF/FFFFFF?text=BZU');
+            /* Replace with actual BZU logo URL */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .education-details h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .education-details p {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .education-date {
+            margin-left: auto;
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* Skills section */
+        .skills {
+            margin-bottom: 40px;
+        }
+
+        .skills h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background-color: #000;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        /* Projects section */
+        .projects {
+            margin-bottom: 40px;
+        }
+
+        .projects h2 {
+            font-size: 2em;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .projects p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .project-card .date {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .project-skill {
+            background-color: #f0f0f0;
+            color: #666;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 700;
+            text-transform: uppercase;
+            gap: 8px;
+        }
+
+        .project-link i {
+            font-size: 16px;
+            /* Match the previous icon size */
+            color: #fff;
+            /* Ensure the icon is white */
+        }
+
+        /* Certifications & Achievements section */
+        .certifications {
+            margin-bottom: 40px;
+        }
+
+        .certifications h2 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .certification {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .certification-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            background-image: url('https://via.placeholder.com/40');
+            /* Replace with actual logo URL */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .certification-date {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 400;
+            margin-right: 15px;
+            min-width: 100px;
+            /* Ensure consistent spacing */
+        }
+
+        .certification-details {
+            flex: 1;
+        }
+
+        .certification-details h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .certification-details p {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Contact section */
+        .contact {
+            margin-bottom: 40px;
+        }
+
+        .contact h2 {
+            font-size: 2em;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 10px;
+            
+        }
+
+        .contact p {
+            font-size: 1.1em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .contact p a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="header-text">
+                <h1>Hi, I'm <span>AHMAD</span> <span class="emoji">👋</span></h1>
+                <p>SEO Expert turned Entrepreneur. Passionate about optimizing, creating, and helping businesses grow.
+                </p>
+            </div>
+            <div class="profile-img">
+                <img src="./Images/topImg.jpg" alt="Profile Image">
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about">
+            <h2>About</h2>
+            <p>I specialize in driving organic growth through effective SEO strategies. From mastering keyword research
+                and on-page optimization to building authoritative links and analyzing performance data, I help
+                businesses boost their online visibility and achieve measurable results.</p>
+        </div>
+
+        <!-- Work Experience Section -->
+        <div class="work-experience">
+            <h2>Work Experience</h2>
+            <div class="job">
+                <div class="job-logo"></div>
+                <div class="job-details">
+                    <h3>NDF Digital</h3>
+                    <p>SEO Specialist</p>
+                </div>
+                <div class="job-date">NOV 2024 - Present</div>
+            </div>
+            <div class="job">
+                <div class="job-logo hexions"></div>
+                <div class="job-details">
+                    <h3>HEXIONS LLC</h3>
+                    <p>SEO Executive</p>
+                </div>
+                <div class="job-date">DEC 2022 - Present</div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="education">
+            <h2>Education</h2>
+            <div class="education-entry">
+                <div class="education-logo"></div>
+                <div class="education-details">
+                    <h3>Pilot Secondary School</h3>
+                    <p>Pre-Engineering</p>
+                </div>
+                <div class="education-date">2017 - 2018</div>
+            </div>
+            <div class="education-entry">
+                <div class="education-logo"></div>
+                <div class="education-details">
+                    <h3>Nishtar College</h3>
+                    <p>D.com</p>
+                </div>
+                <div class="education-date">2019 - 2020</div>
+            </div>
+            <div class="education-entry">
+                <div class="education-logo bzu"></div>
+                <div class="education-details">
+                    <h3>BZU University</h3>
+                    <p>Bachelor's Degree of Entrepreneurship</p>
+                </div>
+                <div class="education-date">2020 - 2024</div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <span class="skill">Keyword Research</span>
+                <span class="skill">On-Page Optimization</span>
+                <span class="skill">Technical SEO</span>
+                <span class="skill">Content Strategy</span>
+                <span class="skill">Link Building</span>
+                <span class="skill">Local SEO</span>
+                <span class="skill">SEO Analytics</span>
+                <span class="skill">Mobile SEO</span>
+                <span class="skill">Competitor Analysis</span>
+                <span class="skill">Schema Markup</span>
+                <span class="skill">Google Search Console</span>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="projects">
+            <h2>Check out my latest work</h2>
+            <p>I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of
+                my favorites.</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Woking Travel Centre</h3>
+                    <div class="date">NOV 2024 - Present</div>
+                    <p>Enhanced online presence and SEO optimization for a leading UK travel agency. Improving search
+                        visibility and customer engagement through comprehensive SEO strategies.</p>
+                    <div class="project-skills">
+                        <span class="project-skill">Keyword Research</span>
+                        <span class="project-skill">On-Page SEO</span>
+                        <span class="project-skill">Content Optimization</span>
+                        <span class="project-skill">Google Search Console</span>
+                        <span class="project-skill">Google Analytics</span>
+                        <span class="project-skill">Local SEO</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Mrs Her's Ice Cream</h3>
+                    <div class="date">NOV 2024 - Present</div>
+                    <p>Implemented comprehensive SEO strategies for a premium ice cream business, enhancing local
+                        visibility and customer reach through targeted optimization.</p>
+                    <div class="project-skills">
+                        <span class="project-skill">Keyword Research</span>
+                        <span class="project-skill">On-Page SEO</span>
+                        <span class="project-skill">Local SEO</span>
+                        <span class="project-skill">Content Strategy</span>
+                        <span class="project-skill">Google Analytics</span>
+                        <span class="project-skill">Technical SEO</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>HP Heating</h3>
+                    <div class="date">NOV 2024 - Present</div>
+                    <p>Optimized digital presence for a heating services company, focusing on local SEO and technical
+                        optimization to improve search rankings and customer acquisition.</p>
+                    <div class="project-skills">
+                        <span class="project-skill">Local SEO</span>
+                        <span class="project-skill">Technical SEO</span>
+                        <span class="project-skill">Content Optimization</span>
+                        <span class="project-skill">Google Search Console</span>
+                        <span class="project-skill">Google Analytics</span>
+                        <span class="project-skill">Schema Markup</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Surrey Tax Accountants</h3>
+                    <div class="date">NOV 2024 - Present</div>
+                    <p>Developed and executed SEO strategies for an accounting firm, improving online visibility and
+                        generating qualified leads through targeted optimization.</p>
+                    <div class="project-skills">
+                        <span class="project-skill">Keyword Research</span>
+                        <span class="project-skill">Content Strategy</span>
+                        <span class="project-skill">On-Page SEO</span>
+                        <span class="project-skill">Local SEO</span>
+                        <span class="project-skill">Google Analytics</span>
+                        <span class="project-skill">Technical SEO</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>NDF Digital</h3>
+                    <div class="date">NOV 2024 - Present</div>
+                    <p>Contributed to the digital marketing agency’s own online presence, implementing cutting-edge SEO
+                        practices and strategies.</p>
+                    <div class="project-skills">
+                        <span class="project-skill">SEO Strategy</span>
+                        <span class="project-skill">Content Marketing</span>
+                        <span class="project-skill">Technical SEO</span>
+                        <span class="project-skill">Analytics</span>
+                        <span class="project-skill">Digital Marketing</span>
+                        <span class="project-skill">Website Optimization</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>FeetFinder</h3>
+                    <div class="date">June 2023 - Feb 2024</div>
+                    <p>I did SEO and keyword research and also did content optimization and blog post.</p>
+                    <div class="project-skills">
+                        <span class="project-skill">Keyword Research</span>
+                        <span class="project-skill">On-Page SEO</span>
+                        <span class="project-skill">Content Optimization</span>
+                        <span class="project-skill">Google Search Console</span>
+                        <span class="project-skill">Google Analytics</span>
+                        <span class="project-skill">Semrush</span>
+                    </div>
+                    <a href="#" class="project-link">
+                        <i class="fas fa-globe"></i> Website
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications & Achievements Section -->
+        <div class="certifications">
+            <h2>Certifications & Achievements</h2>
+            <div class="certification">
+                <div class="certification-logo"></div>
+                <div>
+                    <div class="certification-date">April 8th - 2024</div>
+                    <div class="certification-details" style="margin-top: 10px;">
+                        <h3>Capstone: Applying Project Management in the Real World</h3>
+                        <p>Online</p>
+                        <p>Develop a comprehensive chartered using research and relevant documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact">
+            <h2>Get in Touch</h2>
+            <p>Want to chat? Just shoot me a dm with a direct question on <a href="#">WHATSAPP</a> and I’ll respond
+                whenever I can. I will ignore all soliciting.</p>
+        </div>
+    </div>
+</body>
+
+</html>
