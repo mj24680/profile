@@ -35,13 +35,20 @@
         /* Header section */
         .header {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
 
+        .header-text {
+            order: 2;
+            text-align: center;
+            margin-top: 20px;
+        }
+
         .header-text h1 {
-            font-size: 2.8em;
+            font-size: 2.2em;
             font-weight: 900;
             color: #000;
             margin-bottom: 5px;
@@ -58,29 +65,26 @@
         }
 
         .header-text p {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #333;
             line-height: 1.4;
             font-weight: 400;
         }
 
         .profile-img {
-            width: 180px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             overflow: hidden;
-            /* Ensure the image stays within the circular boundary */
+            order: 1;
         }
 
         .profile-img img {
             width: 100%;
             height: 100%;
-            object-fit: fill;
-            /* Ensure the image scales properly while maintaining aspect ratio */
+            object-fit: cover;
             object-position: center;
-            /* Center the image within the container */
             display: block;
-            /* Remove any extra space below the image */
         }
 
         /* About section */
@@ -116,8 +120,9 @@
 
         .job {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 25px;
+            flex-wrap: wrap;
         }
 
         .job-logo {
@@ -127,17 +132,20 @@
             background-color: #ddd;
             margin-right: 15px;
             background-image: url('https://via.placeholder.com/40');
-            /* Replace with actual logo URL */
             background-size: cover;
             background-position: center;
         }
 
         .job-logo.hexions {
             background-image: url('https://via.placeholder.com/40/FF0000/FFFFFF?text=HEXIONS');
-            /* Replace with actual HEXIONS logo URL */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+        }
+
+        .job-details {
+            flex: 1;
+            min-width: 200px;
         }
 
         .job-details h3 {
@@ -153,10 +161,11 @@
         }
 
         .job-date {
-            margin-left: auto;
             font-size: 0.9em;
             color: #666;
             font-weight: 400;
+            margin-top: 5px;
+            width: 100%;
         }
 
         /* Education section */
@@ -173,8 +182,9 @@
 
         .education-entry {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 25px;
+            flex-wrap: wrap;
         }
 
         .education-logo {
@@ -184,17 +194,20 @@
             background-color: #ddd;
             margin-right: 15px;
             background-image: url('https://via.placeholder.com/40');
-            /* Replace with actual logo URL */
             background-size: cover;
             background-position: center;
         }
 
         .education-logo.bzu {
             background-image: url('https://via.placeholder.com/40/0000FF/FFFFFF?text=BZU');
-            /* Replace with actual BZU logo URL */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+        }
+
+        .education-details {
+            flex: 1;
+            min-width: 200px;
         }
 
         .education-details h3 {
@@ -210,10 +223,11 @@
         }
 
         .education-date {
-            margin-left: auto;
             font-size: 0.9em;
             color: #666;
             font-weight: 400;
+            margin-top: 5px;
+            width: 100%;
         }
 
         /* Skills section */
@@ -249,14 +263,14 @@
         }
 
         .projects h2 {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 900;
             color: #000;
             margin-bottom: 10px;
         }
 
         .projects p {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #666;
             line-height: 1.4;
             margin-bottom: 20px;
@@ -264,7 +278,7 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 20px;
         }
 
@@ -299,6 +313,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
+            margin-bottom: 15px;
         }
 
         .project-skill {
@@ -325,9 +340,7 @@
 
         .project-link i {
             font-size: 16px;
-            /* Match the previous icon size */
             color: #fff;
-            /* Ensure the icon is white */
         }
 
         /* Certifications & Achievements section */
@@ -346,6 +359,7 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 25px;
+            flex-wrap: wrap;
         }
 
         .certification-logo {
@@ -355,7 +369,6 @@
             background-color: #ddd;
             margin-right: 15px;
             background-image: url('https://via.placeholder.com/40');
-            /* Replace with actual logo URL */
             background-size: cover;
             background-position: center;
         }
@@ -366,11 +379,12 @@
             font-weight: 400;
             margin-right: 15px;
             min-width: 100px;
-            /* Ensure consistent spacing */
+            margin-bottom: 10px;
         }
 
         .certification-details {
             flex: 1;
+            min-width: 200px;
         }
 
         .certification-details h3 {
@@ -393,15 +407,14 @@
         }
 
         .contact h2 {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: 900;
             color: #000;
             margin-bottom: 10px;
-            
         }
 
         .contact p {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #666;
             line-height: 1.4;
         }
@@ -409,6 +422,91 @@
         .contact p a {
             color: #1a73e8;
             text-decoration: none;
+        }
+
+        /* Media Queries for larger screens */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px;
+                padding: 40px;
+            }
+
+            .header {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .header-text {
+                order: 1;
+                text-align: left;
+                margin-top: 0;
+                flex: 1;
+                padding-right: 30px;
+            }
+
+            .profile-img {
+                order: 2;
+                width: 180px;
+                height: 180px;
+            }
+
+            .header-text h1 {
+                font-size: 2.8em;
+            }
+
+            .header-text p {
+                font-size: 1.1em;
+            }
+
+            .job {
+                flex-wrap: nowrap;
+                align-items: center;
+            }
+
+            .job-date {
+                width: auto;
+                margin-left: auto;
+                margin-top: 0;
+                text-align: right;
+            }
+
+            .education-entry {
+                flex-wrap: nowrap;
+                align-items: center;
+            }
+
+            .education-date {
+                width: auto;
+                margin-left: auto;
+                margin-top: 0;
+                text-align: right;
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects h2 {
+                font-size: 2em;
+            }
+
+            .projects p {
+                font-size: 1.1em;
+            }
+
+            .contact h2 {
+                font-size: 2em;
+            }
+
+            .contact p {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1000px;
+            }
         }
     </style>
 </head>
@@ -580,7 +678,7 @@
                 <div class="project-card">
                     <h3>NDF Digital</h3>
                     <div class="date">NOV 2024 - Present</div>
-                    <p>Contributed to the digital marketing agency’s own online presence, implementing cutting-edge SEO
+                    <p>Contributed to the digital marketing agency's own online presence, implementing cutting-edge SEO
                         practices and strategies.</p>
                     <div class="project-skills">
                         <span class="project-skill">SEO Strategy</span>
@@ -632,7 +730,7 @@
         <!-- Contact Section -->
         <div class="contact">
             <h2>Get in Touch</h2>
-            <p>Want to chat? Just shoot me a dm with a direct question on <a href="#">WHATSAPP</a> and I’ll respond
+            <p>Want to chat? Just shoot me a dm with a direct question on <a href="#">WHATSAPP</a> and I'll respond
                 whenever I can. I will ignore all soliciting.</p>
         </div>
     </div>
